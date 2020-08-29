@@ -3,6 +3,7 @@
 flake8
 flake8-docstrings
 flake8-import-order
+ipython<7.17.0
 jupyterlab
 pydocstyle<4.0.0
 pytest

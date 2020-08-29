@@ -22,7 +22,7 @@ idna==2.10                # via requests
 iniconfig==1.0.1          # via pytest
 ipykernel==5.3.4          # via notebook
 ipython-genutils==0.2.0   # via nbformat, notebook, traitlets
-ipython==7.18.0           # via ipykernel
+ipython==7.16.1           # via -r requirements-dev.in, ipykernel
 jedi==0.17.2              # via ipython
 jinja2==2.11.2            # via jupyterlab, jupyterlab-server, nbconvert, notebook
 json5==0.9.5              # via jupyterlab-server
