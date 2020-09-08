@@ -74,8 +74,10 @@ class DQNAgent:
         minibatch = random.sample(self.memory, batch_size)
         for state, action, reward, next_state, done in minibatch:
             target = reward
+
             if not done:
                 target = (reward + self.gamma * np.amax(self.model.predict(next_state)[0]))
+
             target_f = self.model.predict(state)
             target_f[0][action] = target
             self.model.fit(state, target_f, epochs=1, verbose=0)
@@ -116,17 +118,16 @@ def main(episodes=25000, batch_size=32, load_model_filename=None):
 
         state = env.reset()
 
-        state = np.concatenate([state[0][0], state[0][1] / 500000, state[0][2] / 10])
-        state = np.reshape(state, [1, state_size])
+        state = np.append(state[0][0], [state[0][1] / 500000, state[0][2] / 10])
+        state = np.reshape(state, [1, state_size]).astype(np.float32)
         for time in range(10):
             action = agent.act(state)
             next_state, reward, done, _ = env.step(action)
 
-            # TODO: FIX
-            next_state = np.concatenate([next_state[0],
-                                         next_state[0][1] / 500000,
-                                         next_state[2] / 10])
-            next_state = np.reshape(next_state, [1, state_size])
+            next_state = np.append(next_state[0],
+                                   [next_state[0][1] / 500000,
+                                    next_state[2] / 10])
+            next_state = np.reshape(next_state, [1, state_size]).astype(np.float32)
             agent.memorize(state, action, reward, next_state, done)
 
             # if we want to store all states and apply a bulk reward
