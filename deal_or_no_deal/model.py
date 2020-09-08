@@ -6,8 +6,8 @@ import xgboost as xgb
 
 
 class BankerModel():
+    """Banker model for the Deal or No Deal environment."""
     def __init__(self):
-        """Banker model for the Deal or No Deal environment."""
         self.preference_multiplier = 0.075
 
     def fit(self, X, y):

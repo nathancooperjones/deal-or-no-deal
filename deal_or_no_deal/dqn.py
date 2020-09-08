@@ -12,24 +12,24 @@ import deal_or_no_deal  # noqa: F401
 
 
 class DQNAgent:
+    """
+    Deep Q Neural Network agent.
+
+    Parameters
+    ----------
+    state_size: int
+        Dimension of the input to the model
+    action_size: int
+        Dimension of the output to the model
+    memory_size: int
+        Maximum length of the memory queue to hold at once (default 500)
+    gamma: float
+        Discount rate of the reward prediction (default 0.95)
+    epsilon_decay: float
+        Amount to decay `epsilon` by after each episode (default 0.9995)
+
+    """
     def __init__(self, state_size, action_size, memory_size=500, gamma=0.95, epsilon_decay=0.9995):
-        """
-        Deep Q Neural Network agent.
-
-        Parameters
-        ----------
-        state_size: int
-            Dimension of the input to the model
-        action_size: int
-            Dimension of the output to the model
-        memory_size: int
-            Maximum length of the memory queue to hold at once (default 500)
-        gamma: float
-            Discount rate of the reward prediction (default 0.95)
-        epsilon_decay: float
-            Amount to decay `epsilon` by after each episode (default 0.9995)
-
-        """
         self.state_size = state_size
         self.action_size = action_size
         self.memory = deque(maxlen=memory_size)
