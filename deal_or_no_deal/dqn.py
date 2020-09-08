@@ -29,11 +29,11 @@ class DQNAgent:
         Amount to decay `epsilon` by after each episode (default 0.9995)
 
     """
-    def __init__(self, state_size, action_size, memory_size=500, gamma=0.95, epsilon_decay=0.9995):
+    def __init__(self, state_size, action_size, memory_size=500, gamma=0.95, epsilon_decay=0.9999):
         self.state_size = state_size
         self.action_size = action_size
         self.memory = deque(maxlen=memory_size)
-        self.gamma = gamma    # discount rate
+        self.gamma = gamma  # discount rate
         self.epsilon = 1.0  # exploration rate
         self.epsilon_min = 0.001
         self.epsilon_decay = epsilon_decay
@@ -70,7 +70,8 @@ class DQNAgent:
 
         act_values = self.model.predict(state)
 
-        return np.argmax(act_values[0])  # returns action
+        # return action with highest probability from model
+        return np.argmax(act_values[0])
 
     def replay(self, batch_size):
         """Replay a state from memory and fit the model on the reward."""
@@ -113,12 +114,6 @@ def main(episodes=25000, batch_size=32, load_model_filename=None):
     done = False
 
     for e in range(episodes):
-        # if we want to store all states and apply a bulk reward
-        # state_list = list()
-        # action_list = list()
-        # next_state_list = list()
-        # done_list = list()
-
         state = env.reset()
 
         state = np.append(state[0][0], [state[0][1] / 500000, state[0][2] / 10])
@@ -133,23 +128,10 @@ def main(episodes=25000, batch_size=32, load_model_filename=None):
             next_state = np.reshape(next_state, [1, state_size]).astype(np.float32)
             agent.memorize(state, action, reward, next_state, done)
 
-            # if we want to store all states and apply a bulk reward
-            # state_list.append(state)
-            # action_list.append(action)
-            # next_state_list.append(next_state)
-            # done_list.append(done)
-
             state = next_state
             if done:
-                # if we want to store all states and apply a bulk reward
-                # for idx in range(len(state_list)):
-                #     agent.memorize(state_list[idx],
-                #                    action_list[idx],
-                #                    reward,
-                #                    next_state_list[idx],
-                #                    done_list[idx])
                 print('Episode: {}/{}, Game Length: {}, Score: {}, e: {:.3}'
-                      .format(e, episodes, time, reward, agent.epsilon))
+                      .format(e, episodes, time + 1, reward, agent.epsilon))
                 break
 
             if len(agent.memory) > batch_size:
