@@ -5,7 +5,7 @@ import fire
 import gym
 from keras.layers import Dense
 from keras.models import Sequential
-from keras.optimizers import RMSprop
+from keras.optimizers import Adam
 import numpy as np
 
 import deal_or_no_deal  # noqa: F401
@@ -52,7 +52,7 @@ class DQNAgent:
         model.add(Dense(8, kernel_initializer='glorot_normal', activation='relu'))
         model.add(Dense(self.action_size, kernel_initializer='glorot_normal', activation='linear'))
 
-        model.compile(loss='mse', optimizer=RMSprop(learning_rate=0.0001))
+        model.compile(loss='mse', optimizer=Adam(learning_rate=0.0001))
 
         return model
 
@@ -63,7 +63,10 @@ class DQNAgent:
     def act(self, state):
         """Get a prediction from a model based on the current state, if not still exploring."""
         if np.random.rand() <= self.epsilon:
-            return random.randrange(self.action_size)
+            if state[0][-1] * 10 > 2:
+                return random.randrange(self.action_size)
+            else:
+                return 1
 
         act_values = self.model.predict(state)
 

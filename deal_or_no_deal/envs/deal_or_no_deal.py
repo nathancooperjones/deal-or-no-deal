@@ -55,7 +55,7 @@ class Deal_or_No_Deal(gym.Env):
         """
         assert self.action_space.contains(action)
 
-        if action == 1:
+        if action == 0:
             self.final_amount = self.banker_offers[-1]
 
             while self.round_num < 9:
@@ -119,9 +119,17 @@ class Deal_or_No_Deal(gym.Env):
         self.cases_left = list()
 
         if self.final_amount >= max(self.banker_offers):
-            return 1
+            if self.final_amount >= self.player_case:
+                return 1
+            else:
+                return -0.25
         else:
-            return -1
+            if self.final_amount >= 131477.54:
+                return -0.5
+            elif self.final_amount >= self.player_case:
+                return -0.75
+            else:
+                return -1
 
     def _make_banker_offer(self):
         """Make an offer from the Banker."""
