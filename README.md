@@ -21,7 +21,7 @@ docker run \
 
 To run the Docker container on the GPU, use:
 ```bash
-# run the container in interactive mode on the CPU...
+# ... or run the container in interactive mode on the GPU...
 docker run \
     -it \
     --rm \
