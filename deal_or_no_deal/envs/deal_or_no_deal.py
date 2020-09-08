@@ -12,7 +12,7 @@ from deal_or_no_deal.config import CASES
 class Deal_or_No_Deal(gym.Env):
     """OpenAI `gym` environment for Deal or No Deal."""
     def __init__(self, verbose=False):
-        """TODO."""
+        """Initialize the environment."""
         # two actions: No Deal or Deal
         self.action_space = spaces.Discrete(2)
         self.observation_space = spaces.Tuple((
@@ -36,7 +36,23 @@ class Deal_or_No_Deal(gym.Env):
         return [seed]
 
     def step(self, action):
-        """TODO."""
+        """
+        Take a step in the environment based on the `action`.
+
+        Parameters
+        ----------
+        action: int
+            Either Deal (0) or No Deal (1)
+
+        Returns
+        -------
+        tuple: 3-dimensions
+            Tuple consisting of:
+                * np.array of cases that have been opened (length: 26)
+                * np.array of the banker's offer (length: 1)
+                * np.array of the round number (length: 1)
+
+        """
         assert self.action_space.contains(action)
 
         if action == 1:
@@ -72,7 +88,7 @@ class Deal_or_No_Deal(gym.Env):
             if self.final_amount == -1:
                 self.final_amount = self.player_case
 
-            banker_offer = 0
+            banker_offer = max(self.banker_offers)
             reward = self._check_if_win()
 
         else:
@@ -98,7 +114,7 @@ class Deal_or_No_Deal(gym.Env):
         )
 
     def _check_if_win(self):
-        """Determine whether we have won."""
+        """Determine whether the player has won or not."""
         self.game_done = True
         self.cases_left = list()
 
@@ -109,7 +125,6 @@ class Deal_or_No_Deal(gym.Env):
 
     def _make_banker_offer(self):
         """Make an offer from the Banker."""
-        # TODO: make model prediction
         round_got_better = 0
         if len(self.cases_opened) > 1:
             round_got_better = int(self.cases_opened[-1] != max(self.cases_opened))

@@ -7,22 +7,32 @@ import xgboost as xgb
 
 class BankerModel():
     def __init__(self):
+        """Banker model for the Deal or No Deal environment."""
         self.preference_multiplier = 0.075
 
     def fit(self, X, y):
-        """TODO."""
+        """
+        Fit the banker model.
+
+        Parameters
+        ----------
+        X: np.array, 2-dimensional
+        y: np.array, 1-dimensional
+            Array of `percentage_difference` values
+
+        """
         print('Fitting linear model...')
         self._train_linear_model(X, y)
         print('Fitting XGBoost model...')
         self._train_xgboost(X, y)
 
     def _train_linear_model(self, X, y):
-        """TODO."""
+        """Train the linear model component."""
         self.linear_model = Lasso(alpha=0.1)
         self.linear_model.fit(X, y)
 
     def _train_xgboost(self, X, y):
-        """TODO."""
+        """Train the XGBoost component."""
         params = {
             'objective': 'reg:squarederror',
             'booster': 'gbtree',
@@ -47,7 +57,22 @@ class BankerModel():
         self.xgb_model.fit(X, y)
 
     def predict(self, X, we_like_contestant=None):
-        """TODO."""
+        """
+        Predict the `percentage_difference` based on the new data in `X`.
+
+        Parameters
+        ----------
+        X: np.array, 2-dimensional
+        we_like_contestant: bool
+            Whether or not to boost or reduce the banker's offer (default None)
+
+        Returns
+        -------
+        prediction: float
+            `percentage_difference` to be multiplied with the `expected_value` to get the final
+            offer
+
+        """
         preference_factor = 1 + (random.random() * self.preference_multiplier)
         weight_factor = random.random()
 
@@ -66,5 +91,5 @@ class BankerModel():
         return prediction
 
     def save(self, filename):
-        """TODO."""
+        """Save the model via `joblib`."""
         joblib.dump(self, filename)
