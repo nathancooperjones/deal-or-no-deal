@@ -8,3 +8,4 @@ jupyterlab
 pydocstyle<4.0.0
 pytest
 pytest-cov<3.0.0
+traitlets==4.3.3

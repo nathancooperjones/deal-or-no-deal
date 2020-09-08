@@ -4,8 +4,9 @@
 #
 #    pip-compile requirements-dev.in
 #
+appnope==0.1.0            # via ipykernel, ipython
 argon2-cffi==20.1.0       # via notebook
-attrs==20.1.0             # via jsonschema, pytest
+attrs==20.2.0             # via jsonschema, pytest
 backcall==0.2.0           # via ipython
 bleach==3.1.5             # via nbconvert
 certifi==2020.6.20        # via requests
@@ -45,7 +46,7 @@ pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pluggy==0.13.1            # via pytest
 prometheus-client==0.8.0  # via notebook
-prompt-toolkit==3.0.6     # via ipython
+prompt-toolkit==3.0.7     # via ipython
 ptyprocess==0.6.0         # via pexpect, terminado
 py==1.9.0                 # via pytest
 pycodestyle==2.6.0        # via flake8, flake8-import-order
@@ -57,17 +58,17 @@ pyparsing==2.4.7          # via packaging
 pyrsistent==0.16.0        # via jsonschema
 pytest-cov==2.10.1        # via -r requirements-dev.in
 pytest==6.0.1             # via -r requirements-dev.in, pytest-cov
-python-dateutil==2.8.1    # via jupyter-client
+python-dateutil==2.8.1    # via -c requirements.txt, jupyter-client
 pyzmq==19.0.2             # via jupyter-client, notebook
 requests==2.24.0          # via jupyterlab-server
 send2trash==1.5.0         # via notebook
-six==1.15.0               # via argon2-cffi, bleach, jsonschema, packaging, pydocstyle, pyrsistent, python-dateutil, traitlets
+six==1.15.0               # via -c requirements.txt, argon2-cffi, bleach, jsonschema, packaging, pydocstyle, pyrsistent, python-dateutil, traitlets
 snowballstemmer==2.0.0    # via pydocstyle
 terminado==0.8.3          # via notebook
 testpath==0.4.4           # via nbconvert
 toml==0.10.1              # via pytest
 tornado==6.0.4            # via ipykernel, jupyter-client, jupyterlab, notebook, terminado
-traitlets==4.3.3          # via ipykernel, ipython, jupyter-client, jupyter-core, nbconvert, nbformat, notebook
+traitlets==4.3.3          # via -r requirements-dev.in, ipykernel, ipython, jupyter-client, jupyter-core, nbconvert, nbformat, notebook
 urllib3==1.25.10          # via requests
 wcwidth==0.2.5            # via prompt-toolkit
 webencodings==0.5.1       # via bleach

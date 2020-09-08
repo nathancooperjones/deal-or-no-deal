@@ -10,7 +10,18 @@ Begin by installing [Docker](https://docs.docker.com/install/) if you have not a
 # build the image to extract features
 docker build -t deal_or_no_deal .
 
-# run the container in interactive mode...
+# run the container in interactive mode on the CPU...
+docker run \
+    -it \
+    --rm \
+    -v "${PWD}:/deal_or_no_deal" \
+    -p 8888:8888 \
+    deal_or_no_deal /bin/bash -c "pip install -r requirements-dev.txt && bash"
+```
+
+To run the Docker container on the GPU, use:
+```bash
+# run the container in interactive mode on the CPU...
 docker run \
     -it \
     --rm \

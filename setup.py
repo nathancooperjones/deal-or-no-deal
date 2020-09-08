@@ -5,5 +5,12 @@ setup(
     version='0.0.1',
     install_requires=[
         'gym',
+        'joblib',
+        'Keras',
+        'numpy',
+        'pandas',
+        'sklearn',
+        'xgboost',
+        'xlrd',
     ]
 )
