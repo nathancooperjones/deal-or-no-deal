@@ -122,10 +122,10 @@ class Deal_or_No_Deal(gym.Env):
             if self.final_amount >= self.player_case:
                 return 1
             else:
-                return -0.25
+                return 0.75
         else:
             if self.final_amount >= 131477.54:
-                return -0.5
+                return 0.5
             elif self.final_amount >= self.player_case:
                 return -0.75
             else:

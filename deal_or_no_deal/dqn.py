@@ -52,7 +52,7 @@ class DQNAgent:
         model.add(Dense(8, kernel_initializer='glorot_normal', activation='relu'))
         model.add(Dense(self.action_size, kernel_initializer='glorot_normal', activation='linear'))
 
-        model.compile(loss='mse', optimizer=Adam(learning_rate=0.0001))
+        model.compile(loss='mse', optimizer=Adam(learning_rate=0.0005))
 
         return model
 
@@ -98,7 +98,7 @@ class DQNAgent:
         self.model.load_weights(filename)
 
 
-def main(episodes=25000, batch_size=32, load_model_filename=None):
+def main(episodes=5000, batch_size=32, load_model_filename=None):
     """Initialize a DQNAgent and play some episodes."""
     env = gym.make('deal-or-no-deal-v0')
 
@@ -110,6 +110,7 @@ def main(episodes=25000, batch_size=32, load_model_filename=None):
 
     if load_model_filename:
         agent.load(load_model_filename)
+        print('Agent loaded!')
 
     done = False
 
@@ -138,7 +139,7 @@ def main(episodes=25000, batch_size=32, load_model_filename=None):
                 agent.replay(batch_size)
 
         if e % 500 == 0 and e > 0:
-            agent.save(f'/deal_or_no_deal/data/dqn_{e}.h5')
+            agent.save(f'/deal_or_no_deal/data/dqn_v2_{e}.h5')
 
 
 if __name__ == '__main__':
