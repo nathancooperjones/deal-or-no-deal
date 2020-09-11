@@ -120,15 +120,23 @@ class Deal_or_No_Deal(gym.Env):
 
         if self.final_amount >= max(self.banker_offers):
             if self.final_amount >= self.player_case:
+                # we beat the banker and walk out with a good case
                 return 1
             else:
+                # we beat the banker but walk out without a good case
                 return 0.75
         else:
             if self.final_amount >= 131477.54:
+                # we don't beat the banker or walk out with a good case, but we
+                # get a case value higher than the expected value
                 return 0.5
-            elif self.final_amount >= self.player_case:
+            elif self.final_amount > self.player_case:
+                # we don't beat the banker, walk out with a good case, or get a
+                # case value higher than the expected value, but we at least
+                # the offer we accepted was higher than the amount in our case
                 return -0.75
             else:
+                # we just flat-out lose
                 return -1
 
     def _make_banker_offer(self):

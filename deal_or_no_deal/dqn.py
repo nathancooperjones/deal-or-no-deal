@@ -8,6 +8,7 @@ from keras.models import Sequential
 from keras.optimizers import Adam
 import numpy as np
 
+# need to import `deal_or_no_deal` for the GYM environment
 import deal_or_no_deal  # noqa: F401
 
 
@@ -139,7 +140,9 @@ def main(episodes=5000, batch_size=32, load_model_filename=None):
                 agent.replay(batch_size)
 
         if e % 500 == 0 and e > 0:
-            agent.save(f'/deal_or_no_deal/data/dqn_v2_{e}.h5')
+            agent.save(f'/deal_or_no_deal/data/dqn_v3_{e}.h5')
+
+    agent.save(f'/deal_or_no_deal/data/dqn_v3_{e}.h5')
 
 
 if __name__ == '__main__':
