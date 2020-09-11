@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project uses [Semantic Versioning](http://semver.org/).
 
+# [0.4.0] - 2020-9-11
+### Added
+ - cleaner notebook
+ - `README` with hyperlinks
+ - `nbs` cleaned and ready-to-go
+### Changed
+ - renamed `model.py -> banker.py`
+ - reward structure for `DQNAgent` has been thoroughly improved
+
 # [0.3.0] - 2020-9-10
 ### Added
  - more descriptive `README`
