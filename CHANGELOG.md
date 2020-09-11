@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project uses [Semantic Versioning](http://semver.org/).
 
+# [0.3.0] - 2020-9-10
+### Added
+ - more descriptive `README`
+ - modified environment rewards in `envs/deal_or_no_deal.py`
+
 # [0.2.0] - 2020-9-8
 ### Added
  - `fast_play.py` to play multiple realities of a game based on a current game state
