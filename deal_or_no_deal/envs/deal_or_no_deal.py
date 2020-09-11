@@ -28,7 +28,7 @@ class Deal_or_No_Deal(gym.Env):
         self.trials = 100
         self.verbose = verbose
 
-        self.banker_model = joblib.load('/deal_or_no_deal/data/banker_model_0908.pkl')
+        self.banker_model = joblib.load('/deal_or_no_deal/data/banker_final.pkl')
 
     def _seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
