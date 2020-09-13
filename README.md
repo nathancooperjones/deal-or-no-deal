@@ -9,7 +9,7 @@ Deal or No Deal is the greatest TV game show of all time, but for some unknown r
 ... until now!
 
 ### Why (in audiovisual form)?
-See my talk [here](https://youtu.be/zYSWbexuaM8) or just my slides [here](https://drive.google.com/file/d/1Dd-AYJv7QoEukR8kW8E1ny-VduZGuCT8/view?usp=sharing)!
+See my talk [here](https://youtu.be/7jSvFHGyEeE) or just my slides [here](https://drive.google.com/file/d/1Dd-AYJv7QoEukR8kW8E1ny-VduZGuCT8/view?usp=sharing)!
 
 ### Why (in code form)?
 Despite it's simplicity on the surface, Deal or No Deal is a great environment to build a simple supervised model to predict the Banker's model and train a reinforcement learning model in a simple (but tricky) game environment without a clear strategy.
