@@ -9,15 +9,15 @@ Deal or No Deal is the greatest TV game show of all time, but for some unknown r
 ... until now!
 
 ### Why (in audiovisual form)?
-See my talk here (COMING SOON) or just my slides [here](https://drive.google.com/file/d/1Dd-AYJv7QoEukR8kW8E1ny-VduZGuCT8/view?usp=sharing)!
+See my talk [here](https://youtu.be/zYSWbexuaM8) or just my slides [here](https://drive.google.com/file/d/1Dd-AYJv7QoEukR8kW8E1ny-VduZGuCT8/view?usp=sharing)!
 
 ### Why (in code form)?
-Despite it's simplicity on the surface, Deal or No Deal is a great environment to build a simple supervised model to predict the banker's model and train a reinforcement learning model in a simple (but tricky) game environment without a clear strategy.
+Despite it's simplicity on the surface, Deal or No Deal is a great environment to build a simple supervised model to predict the Banker's model and train a reinforcement learning model in a simple (but tricky) game environment without a clear strategy.
 
 This repo not only contains the data of all decisions made in over 60 episodes of Deal or No Deal, but also:
 - A [`Docker`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/Dockerfile) container that installs all necessary requirements to run all the code
 - Code to preprocess the TV data into a ML-ready format ([`deal_or_no_deal/preprocess.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/preprocess.py))
-- A "random ensemble" supervised machine learning model to input a game state and predict a shockingly close Banker offer ([`deal_or_no_deal/banker.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/banker.py))
+- A "random ensemble" supervised machine learning model to input a game state and predict a shockingly close Banker offer ([`deal_or_no_deal/Banker.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/Banker.py))
 - An OpenAI Gym Deal or No Deal environment ([`deal_or_no_deal/envs/deal_or_no_deal.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/envs/deal_or_no_deal.py))
 - Code to train a DQN reinforcement learning agent to explore the Deal or No Deal Environment ([`deal_or_no_deal/dqn.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/dqn.py))
 - Code for an agent to input a game state and play *n* games in the future, revealing the percentage of future games that end with winnings higher than the current Banker's offer ([`deal_or_no_deal/fast_play.py`](https://github.com/nathancooperjones/deal-or-no-deal/blob/master/deal_or_no_deal/fast_play.py))
